@@ -4,12 +4,17 @@ import Livros.Livros;
 public class Main {
     public static void main(String[] args) throws Exception {
         
-        Livros l = new Livros();
+        LivroDAO livroDAO = new LivroDAO();
+        Livros l = livroDAO.buscarLivroPorID(2);
 
-        l.setNome("O Senhor dos Anéis");
-        l.setAutor("J.R.R. Tolkien");
-
-        new LivroDAO().cadastrarLivro(l);
+        if (l!=null) {
+            System.out.println("Livro Encontrado: ");
+            System.out.println("ID: #"+ l.getID());
+            System.out.println("Nome: "+ l.getNome());
+            System.out.println("Autor: "+ l.getAutor());
+        } else{
+            System.out.println("Livro NÃO Encontrado!!");
+        }
 
     }
 }

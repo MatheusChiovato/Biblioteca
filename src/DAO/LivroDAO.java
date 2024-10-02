@@ -1,6 +1,7 @@
 package DAO;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Connection.Conexao;
@@ -30,5 +31,32 @@ public class LivroDAO {
         }
 
     }
+
+    // Método para buscar um livro pelo ID
+    public Livros buscarLivroPorID(int id){
+        String sql = "SELECT * FROM LIVROS WHERE ID = ?";
+        Livros livro = null;
+
+        try(PreparedStatement ps = Conexao.getConexao().prepareStatement(sql)) {
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()){
+                livro = new Livros();
+                livro.setID(rs.getInt("ID"));
+                livro.setNome(rs.getString("NOME"));
+                livro.setAutor(rs.getString("AUTOR"));
+            }
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return livro;
+
+    }
+
+
+
+
 
 }
