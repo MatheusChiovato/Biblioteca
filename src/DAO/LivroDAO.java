@@ -13,7 +13,7 @@ public class LivroDAO {
     //Metodo para realizar cadastros de livros no banco de dados    
     public void cadastrarLivro(Livros livro){
 
-        String sql = "INSERT INTO LIVROS (NOME, AUTOR, valor_diario, alugado) VALUES(?, ?, ?, ?)";
+        String sql = "INSERT INTO LIVROS (NOME, AUTOR, valor_diario, alugado, quantidade) VALUES(?, ?, ?, ?, ?)";
 
         PreparedStatement ps = null;
         if (verificarLivro(livro.getNome())) {
@@ -26,6 +26,7 @@ public class LivroDAO {
             ps.setString(2, livro.getAutor());
             ps.setDouble(3, livro.getValorDiario());
             ps.setBoolean(4, livro.isAlugado());
+            ps.setInt(5, livro.getQuantidade());
 
 
             ps.execute();

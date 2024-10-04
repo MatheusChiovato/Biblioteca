@@ -2,26 +2,35 @@ package Entidades;
 
 public class Livros {
     
-    private int ID;
-    private String nome;
+    private int idLivro;
+    private String nomeLivro;
     private String autor;
     private double valorDiario;
     private boolean alugado;
+    private int quantidade;
 
     
+    public int getQuantidade() {
+        return quantidade;
+    }
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+
     public int getID() {
-        return ID;
+        return idLivro;
     }
     public void setID(int iD) {
-        ID = iD;
+        idLivro = iD;
     }
 
 
     public String getNome() {
-        return nome;
+        return nomeLivro;
     }
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome(String nomeLivro) {
+        this.nomeLivro = nomeLivro;
     }
 
 
